@@ -1,11 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import  { useState } from 'react'
 import './App.css'
+import axios from 'axios'
 
+const BASE_URL = "https://api.balldontlie.io/v1/players";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
