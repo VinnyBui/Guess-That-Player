@@ -6,17 +6,11 @@ import axios from 'axios'
 function App() {
   return (
       <>
-          <div>
-              <h1>
+          <div className="flex flex-col items-center gap-8">
+              <h1 className="font-bold text-5xl">
                   Guess That Player
               </h1>
-              <searchPlayer/>
-          </div>
-          <div>
-              <label className="input input-bordered flex items-center gap-2">
-                  Name
-                  <input type="text" className="grow" placeholder="Daisy"/>
-              </label>
+              {searchPlayer()}
           </div>
       </>
   )
