@@ -4,8 +4,8 @@ function SearchPlayer(props) {
     return (
         <>
             <div className="flex items-center">
-                <label className="input input-bordered">
-                    <input type="text" className="" placeholder="Name"/>
+                <label className="input input-bordered flex justify-center">
+                    <input type="text" className="text-center" placeholder="Names"/>
                 </label>
             </div>
         </>
