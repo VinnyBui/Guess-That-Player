@@ -6,7 +6,21 @@ import './App.css'
 
 function App() {
 
-    fetchAllPlayers();
+    const[playersData, setPlayersData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await fetchAllPlayers();
+                setPlayersData(data);
+            } catch (error) {
+                console.error('Error fetching players:', error);
+            }
+        };
+        fetchData();
+        
+    }, []);
+
 
     return (
       <>

@@ -53,7 +53,7 @@ export const fetchAllPlayers = async () => {
         console.log("Player data has been saved!")
         //Retrieves data from local storage and store it in a variable
         const playersData = JSON.parse(localStorage.getItem('playersData'))
-        console.log(playersData)
+        return playersData;
     } catch (error) {
         console.error('Error fetching players:', error);
     }
