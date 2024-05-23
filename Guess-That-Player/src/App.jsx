@@ -14,6 +14,7 @@ function App() {
             let uniquePlayerIds = new Set();
             const perPage = 100;
 
+            //fetch data per page 
             const fetchPage = async (cursor) => {
                 const response = await axios.get(URL, {
                     params: {
@@ -30,29 +31,32 @@ function App() {
             let requestsMade = 0;
 
             while(true){
+                //grabs data from current page
                 const data = await fetchPage(nextCursor);
+                //Makes a newPlayers array and checks for unique ID
                 const newPlayers = data.data.filter(player => !uniquePlayerIds.has(player.id))
-
+                //Puts data into allPlayer arrays
                 allPlayers.push(...data.data);
+                //Make sure to add each playerID into each item
                 newPlayers.forEach(player => uniquePlayerIds.add(player.id));
-
+                //If less new players than page, there is no more new data to be added 
                 if(newPlayers.length < perPage){
                     break;
                 }
-
+                //Move onto next page
                 nextCursor = data.meta.next_cursor;
                 requestsMade++;
                 //Make sure to stay within the API rate
+                //honestly prob don't need it but maybe good for later
                 if(requestsMade >= 600){
                     await new Promise(resolve => setTimeout(resolve, 60000));
                     requestsMade = 0;
                 }
             }
-            
-        
+            //Turns item into JSON file and put it in local storage
             localStorage.setItem('playersData', JSON.stringify(allPlayers));
             console.log("Player data has been saved!")
-
+            //Retrieves data from local storage and store it in a variable
             const playersData = JSON.parse(localStorage.getItem('playersData'))
             console.log(playersData)
         } catch (error) {
