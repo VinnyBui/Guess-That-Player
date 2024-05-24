@@ -3,9 +3,7 @@ import searchPlayer from "../components/searchPlayer.jsx"
 import { fetchAllPlayers } from '../components/fetchAllPlayers.jsx'
 import './App.css'
 
-
 function App() {
-
     const[playersData, setPlayersData] = useState(null);
 
     useEffect(() => {
@@ -18,8 +16,8 @@ function App() {
             }
         };
         fetchData();
-        
     }, []);
+
 
 
     return (
@@ -28,7 +26,7 @@ function App() {
               <h1 className="font-bold text-5xl">
                   Guess That Player
               </h1>
-              {searchPlayer()}
+              {searchPlayer(playersData)}
           </div>
       </>
   )

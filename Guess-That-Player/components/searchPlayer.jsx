@@ -1,6 +1,8 @@
 import React from 'react';
+import fullName from './fullName';
 
-function SearchPlayer(props) {
+function SearchPlayer(playersData) {
+    const fullNameList = fullName(playersData);
     return (
         <>
             <div className="flex items-center">
