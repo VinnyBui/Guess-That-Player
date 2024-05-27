@@ -1,10 +1,12 @@
 import  React, { useState, useEffect } from 'react'
-import searchPlayer from "../components/searchPlayer.jsx"
-import { fetchAllPlayers } from '../components/fetchAllPlayers.jsx'
+import searchPlayer from '../components/searchPlayer.jsx';
+import fetchAllPlayers from '../components/fetchAllPlayers.jsx';
+import randomPick from '../components/randomPick.jsx';
 import './App.css'
 
 function App() {
     const[playersData, setPlayersData] = useState(null);
+  
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,6 +20,8 @@ function App() {
         fetchData();
     }, []);
 
+    const name = randomPick(playersData)
+    
 
 
     return (

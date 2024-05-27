@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = 'https://api.balldontlie.io/v1/players/active'    
 
-export const fetchAllPlayers = async () => {
+const fetchAllPlayers = async () => {
     try {
         let allPlayers = [];
         let nextCursor = 0;
@@ -59,3 +59,4 @@ export const fetchAllPlayers = async () => {
     }
 };
     
+export default fetchAllPlayers;
