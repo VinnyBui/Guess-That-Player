@@ -6,13 +6,14 @@ import './App.css'
 
 function App() {
     const[playersData, setPlayersData] = useState(null);
-  
+    const[randomName, setRandomName] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await fetchAllPlayers();
                 setPlayersData(data);
+                setRandomName(randomPick(data));
             } catch (error) {
                 console.error('Error fetching players:', error);
             }
@@ -20,16 +21,15 @@ function App() {
         fetchData();
     }, []);
 
-    const name = randomPick(playersData)
-    
-
-
     return (
       <>
           <div className="flex flex-col items-center gap-8">
               <h1 className="font-bold text-5xl">
                   Guess That Player
               </h1>
+              <h1 className="font-bold text-3xl">
+                    {randomName}
+                </h1>
               {searchPlayer(playersData)}
           </div>
       </>
