@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import fullName from './fullName';
+import fullName from './fullName.jsx';
 import { FaSearch } from "react-icons/fa"
 
 function SearchPlayer(playersData) {
-    const fullNameList = fullName(playersData);
     const [input, setInput] = useState("");
+    let fullNameList = fullName(playersData);
 
-    console.log(fullNameList)
     return (
         <>
             <div className="Search-bar-container">
@@ -23,12 +22,11 @@ function SearchPlayer(playersData) {
                     />
                 </div>
                 <div className="Search-result">
-                    {fullNameList.map((name, index) => {
+                    {fullNameList.map((name, index) => (
                         <div key={index}>
                             <p>{name}</p>
                         </div>
-                    })}
-
+                    ))}
                 </div>
             </div>
         </>

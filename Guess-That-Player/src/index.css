@@ -53,5 +53,6 @@ input{
         shadow-md
         rounded-lg
         mt-4
-        max-h-80;
+        max-h-80
+        overflow-y-scroll;
 }

@@ -56,6 +56,7 @@ const fetchAllPlayers = async () => {
         return playersData;
     } catch (error) {
         console.error('Error fetching players:', error);
+        throw new Error('Failed to fetch player data')
     }
 };
     
