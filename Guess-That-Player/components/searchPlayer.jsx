@@ -9,9 +9,6 @@ function SearchPlayer(playersData) {
     return (
         <>
             <div className="Search-bar-container">
-                {/* <label className="input input-bordered flex justify-center">
-                    <input type="text" className="text-center" placeholder="Names"/>
-                </label> */}
                 <div className="Input-wrapper">
                     <FaSearch id="search-icon" />
                     <input 

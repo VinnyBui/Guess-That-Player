@@ -23,13 +23,10 @@ function App() {
 
     return (
       <>
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-8 pt-20">
               <h1 className="font-bold text-5xl">
                   Guess That Player
               </h1>
-              <h1 className="font-bold text-3xl">
-                    {randomName}
-                </h1>
               {searchPlayer(playersData)}
           </div>
       </>
