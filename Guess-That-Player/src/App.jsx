@@ -2,10 +2,11 @@ import  React, { useState, useEffect } from 'react'
 import searchPlayer from '../components/searchPlayer.jsx';
 import fetchAllPlayers from '../components/fetchAllPlayers.jsx';
 import randomPick from '../components/randomPick.jsx';
+import SearchPlayer from '../components/searchPlayer.jsx';
 
 
 function App() {
-    const[playersData, setPlayersData] = useState(null);
+    const[playersData, setPlayersData] = useState([]);
     const[randomName, setRandomName] = useState('');
 
     useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
               <h1 className="font-bold text-5xl">
                   Guess That Player
               </h1>
-              {searchPlayer(playersData)}
+              <SearchPlayer  playersData={playersData}/>
           </div>
       </>
   )

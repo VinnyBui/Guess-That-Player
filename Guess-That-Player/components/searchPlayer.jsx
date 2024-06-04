@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import fullName from './fullName.jsx';
 import { FaSearch } from "react-icons/fa"
 
-function SearchPlayer(playersData) {
+function SearchPlayer({playersData}) {
     const [input, setInput] = useState("");
     let fullNameList = fullName(playersData);
 
@@ -18,9 +18,9 @@ function SearchPlayer(playersData) {
                         onChange= {(e) => setInput(e.target.value)}
                     />
                 </div>
-                <div className="Search-result">
+                <div className="Results-list">
                     {fullNameList.map((name, index) => (
-                        <div key={index}>
+                        <div className="Search-result" key={index}>
                             <p>{name}</p>
                         </div>
                     ))}
