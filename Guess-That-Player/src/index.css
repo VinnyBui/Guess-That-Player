@@ -19,7 +19,7 @@
 
 .Input-wrapper{
     @apply 
-      bg-slate-200 
+      bg-slate-100 
         w-1/2 
         rounded-lg 
         flex 
@@ -40,7 +40,7 @@ input{
 }
 
 #search-icon{
-    color: royalblue;
+    color: black;
 }
 
 .Results-list{
