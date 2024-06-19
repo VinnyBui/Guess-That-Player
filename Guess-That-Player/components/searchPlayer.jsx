@@ -6,6 +6,7 @@ function SearchPlayer({playersData}) {
     const [input, setInput] = useState("");
     let fullNameList = fullName(playersData);
 
+    const filteredNamesList = fullNameList.filter(name => name.toLowerCase().includes(input.toLowerCase()))
     return (
         <>
             <div className="Search-bar-container">
@@ -19,7 +20,7 @@ function SearchPlayer({playersData}) {
                     />
                 </div>
                 <div className="Results-list">
-                    {fullNameList.map((name, index) => (
+                    {filteredNamesList.map((name, index) => (
                         <div className="Search-result" key={index}>
                             <p>{name}</p>
                         </div>
