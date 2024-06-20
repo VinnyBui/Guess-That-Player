@@ -1,9 +1,7 @@
 import  React, { useState, useEffect } from 'react'
-import searchPlayer from '../components/searchPlayer.jsx';
-import fetchAllPlayers from '../components/fetchAllPlayers.jsx';
-import randomPick from '../components/randomPick.jsx';
-import SearchPlayer from '../components/searchPlayer.jsx';
-
+import fetchAllPlayers from '@/components/fetchAllPlayers';
+import randomPick from '@/components/randomPick';
+import SearchPlayer from '@/components/searchPlayer';
 
 function App() {
     const[playersData, setPlayersData] = useState([]);
@@ -29,6 +27,7 @@ function App() {
                   Guess That Player
               </h1>
               <SearchPlayer  playersData={playersData}/>
+
           </div>
       </>
   )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fullName from './fullName.jsx';
+import fullName from '@/components/fullName';
 import { FaSearch } from "react-icons/fa";
 
 function SearchPlayer({ playersData }) {
