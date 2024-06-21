@@ -117,21 +117,21 @@ input{
 }
 
 .Results-list{
-    @apply
-        w-1/2
-        flex
-        flex-col
-        items-center
-        shadow-md
-        rounded-lg
-        mt-4
-        max-h-44
-        overflow-y-scroll;
+  @apply
+    w-1/2
+    flex
+    flex-col
+    items-center
+    shadow-md
+    rounded-lg
+    mt-4
+    max-h-32
+    overflow-y-auto;
+  
 }
 
-.Searh-result{
-    @apply
-        hover:bg-slate-200;
+.Search-result:hover {
+  background-color: #f0f0f0; /* Add a background color on hover to indicate selection */
 }
 
 .player-image {

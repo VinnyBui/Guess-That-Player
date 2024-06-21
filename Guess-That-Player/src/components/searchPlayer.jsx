@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 function SearchPlayer({ playersData }) {
     const [input, setInput] = useState("");
     const [showResults, setShowResults] = useState(false); // State to manage the visibility of results
+    const [selectedName, setSelectedName] = useState("");
     const fullNameList = fullName(playersData);
 
     // Filter the list of names based on the input
@@ -23,6 +24,12 @@ function SearchPlayer({ playersData }) {
         setTimeout(() => setShowResults(false), 100);
     };
 
+    const handleNameClick = (name) => {
+        setInput(name);
+        setSelectedName(name);
+        setShowResults(false);
+    }
+
     return (
         <>
             <div className="Search-bar-container">
@@ -38,10 +45,13 @@ function SearchPlayer({ playersData }) {
                     />
                 </div>
                 {showResults && (
-                    <div className="Results-list">
+                    <div className="Results-list ">
                         {filteredNames.map((name, index) => (
-                            <div className="Search-result" key={index}>
-                                <p>{name}</p>
+                            <div className="Search-result cursor-pointer" 
+                                key={index}
+                                onClick={() => handleNameClick(name)}    
+                            >
+                                <p className="text-gray-800">{name}</p>
                             </div>
                         ))}
                     </div>
