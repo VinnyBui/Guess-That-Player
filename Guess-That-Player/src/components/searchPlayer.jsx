@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import fullName from '@/components/fullName';
 import { FaSearch } from "react-icons/fa";
 
+
 function SearchPlayer({ playersData }) {
     const [input, setInput] = useState("");
     const [showResults, setShowResults] = useState(false); // State to manage the visibility of results

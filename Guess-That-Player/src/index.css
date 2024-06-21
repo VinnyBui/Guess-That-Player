@@ -133,3 +133,10 @@ input{
     @apply
         hover:bg-slate-200;
 }
+
+.player-image {
+  width: 100px;
+  height: auto;
+  border-radius: 20%;
+  margin-bottom: 15px;
+}
