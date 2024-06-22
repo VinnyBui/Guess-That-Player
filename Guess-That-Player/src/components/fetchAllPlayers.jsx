@@ -59,5 +59,19 @@ const fetchAllPlayers = async () => {
         throw new Error('Failed to fetch player data')
     }
 };
-    
-export default fetchAllPlayers;
+
+const fetchPlayerData = async (playerId) => {
+    try{ 
+        const response = await axios.get(`https://api.balldontlie.io/v1/players/${playerId}`, {
+            headers: {
+                'Authorization': 'fb3685fc-ad92-4790-9b3b-1f1fdeb83b17'
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.log('Error fetching player detais', error);
+        throw new Error('Failed to fetch player details');
+    }
+}
+
+export default {fetchAllPlayers, fetchPlayerData};

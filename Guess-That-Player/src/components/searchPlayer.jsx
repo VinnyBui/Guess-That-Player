@@ -3,10 +3,9 @@ import fullName from '@/components/fullName';
 import { FaSearch } from "react-icons/fa";
 
 
-function SearchPlayer({ playersData }) {
+function SearchPlayer({ playersData, setSelectedPlayer }) {
     const [input, setInput] = useState("");
     const [showResults, setShowResults] = useState(false); // State to manage the visibility of results
-    const [selectedName, setSelectedName] = useState("");
     const fullNameList = fullName(playersData);
 
     // Filter the list of names based on the input
@@ -26,7 +25,7 @@ function SearchPlayer({ playersData }) {
 
     const handleNameClick = (name) => {
         setInput(name);
-        setSelectedName(name);
+        setSelectedPlayer(name);
         setShowResults(false);
     }
 

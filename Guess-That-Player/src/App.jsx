@@ -7,6 +7,7 @@ import PlayerCard from './components/playerCard';
 function App() {
     const[playersData, setPlayersData] = useState([]);
     const[randomName, setRandomName] = useState('');
+    const[selectedPlayer, setSelectedPlayer] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,8 +28,8 @@ function App() {
                 <h1 className="font-bold text-5xl">
                     Guess That Player
                 </h1>
-                <SearchPlayer  playersData={playersData}/>
-                <PlayerCard/>
+                <SearchPlayer  playersData={playersData} setSelectedPlayer={setSelectedPlayer}/>
+                <PlayerCard selectedPlayer={selectedPlayer}/>
           </div>
       </>
   )
