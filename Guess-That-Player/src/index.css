@@ -126,7 +126,8 @@ input{
     rounded-lg
     mt-4
     max-h-32
-    overflow-y-auto;
+    overflow-y-auto
+    bg-slate-300;
   
 }
 

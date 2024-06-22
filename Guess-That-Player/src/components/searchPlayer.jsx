@@ -32,8 +32,8 @@ function SearchPlayer({ playersData }) {
 
     return (
         <>
-            <div className="Search-bar-container">
-                <div className="Input-wrapper">
+            <div className="Search-bar-container relative w-full">
+                <div className="Input-wrapper relative w-full">
                     <FaSearch id="search-icon" />
                     <input 
                         type="text" 
@@ -45,7 +45,7 @@ function SearchPlayer({ playersData }) {
                     />
                 </div>
                 {showResults && (
-                    <div className="Results-list ">
+                    <div className="Results-list absolute top-full w-full">
                         {filteredNames.map((name, index) => (
                             <div className="Search-result cursor-pointer" 
                                 key={index}
