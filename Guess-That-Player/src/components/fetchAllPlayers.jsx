@@ -41,8 +41,8 @@ const fetchAllPlayers = async () => {
             //Move onto next page
             nextCursor = data.meta.next_cursor;
             requestsMade++;
-            //Make sure to stay within the API rate
-            //honestly prob don't need it but maybe good for later
+            //Making sure to stay within the API rate
+            //honestly prob don't need it but maybe good for later if I demoted plans
             if(requestsMade >= 600){
                 await new Promise(resolve => setTimeout(resolve, 60000));
                 requestsMade = 0;
@@ -74,4 +74,4 @@ const fetchPlayerData = async (playerId) => {
     }
 }
 
-export default {fetchAllPlayers, fetchPlayerData};
+export {fetchAllPlayers, fetchPlayerData};

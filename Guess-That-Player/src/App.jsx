@@ -1,5 +1,5 @@
 import  React, { useState, useEffect } from 'react'
-import fetchAllPlayers from '@/components/fetchAllPlayers';
+import { fetchAllPlayers } from '@/components/fetchAllPlayers';
 import randomPick from '@/components/randomPick';
 import SearchPlayer from '@/components/searchPlayer';
 import PlayerCard from './components/playerCard';
