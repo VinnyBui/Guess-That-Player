@@ -60,15 +60,19 @@ const fetchAllPlayers = async () => {
     }
 };
 
-const fetchPlayerData = async (playerId) => {
+const fetchPlayerData = async (selectedName) => {
     try{ 
-        const response = await axios.get(`https://api.balldontlie.io/v1/players/${playerId}`, {
+        const [firstName, lastName] = selectedName.split(' ');
+        const response = await axios.get(`https://api.balldontlie.io/v1/players/active`, {
+            params: {
+                first_name: firstName,
+                last_name: lastName,
+            },
             headers: {
                 'Authorization': 'fb3685fc-ad92-4790-9b3b-1f1fdeb83b17'
             },
         });
-        console.log(response.data.data)
-        return response.data.data;
+        return response.data.data[0];
     } catch (error) {
         console.log('Error fetching player detais', error);
         throw new Error('Failed to fetch player details');

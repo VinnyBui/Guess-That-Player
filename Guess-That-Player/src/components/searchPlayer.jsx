@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fullName } from '@/components/fullName';
+import fullName from '@/components/fullName';
 import { FaSearch } from "react-icons/fa";
 
 

@@ -9,7 +9,6 @@ import {
 import fetchPlayerPic from "./fetchPlayerPic";
 import { useEffect, useState } from "react";
 import { fetchPlayerData } from "./fetchAllPlayers";
-import { checkName } from "./fullName";
 
 const PlayerCard = ({ selectedPlayer }) => {
   const [playerData, setPlayerData] = useState(null);
@@ -21,21 +20,10 @@ const PlayerCard = ({ selectedPlayer }) => {
 
     const fetchData = async () => {
       try {
-        let index = checkName(selectedPlayer);
-        
-        if (index !== -1) {
-          const data = await fetchPlayerData(index);
-          const imageUrl = await fetchPlayerPic(selectedPlayer);
-          setPlayerData(data);
-          setPlayerPic(imageUrl);
-      } else {
-          setError('Player not found');
-      }
-      
-        // const playerData = await fetchPlayerData();
-        // const imageUrl = await fetchPlayerPic(selectedPlayer); // Change the player name as needed
-        // setPlayerData(playerData);
-        // setPlayerPic(imageUrl);
+        const playerData = await fetchPlayerData(selectedPlayer);
+        const imageUrl = await fetchPlayerPic(selectedPlayer); // Change the player name as needed
+        setPlayerData(playerData);
+        setPlayerPic(imageUrl);
       }catch (error) {
         console.error('Error fetching player card:', error);
         setError('Failed to fetch player card');
