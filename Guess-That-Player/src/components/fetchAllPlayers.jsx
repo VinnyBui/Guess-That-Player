@@ -67,7 +67,8 @@ const fetchPlayerData = async (playerId) => {
                 'Authorization': 'fb3685fc-ad92-4790-9b3b-1f1fdeb83b17'
             },
         });
-        return response.data;
+        console.log(response.data.data)
+        return response.data.data;
     } catch (error) {
         console.log('Error fetching player detais', error);
         throw new Error('Failed to fetch player details');

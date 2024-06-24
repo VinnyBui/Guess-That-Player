@@ -1,4 +1,4 @@
-import fullName from "./fullName";
+import { fullName } from "./fullName";
 
 const randomPick = (playersData) => {
     const fullNameList = fullName(playersData);

@@ -9,25 +9,36 @@ import {
 import fetchPlayerPic from "./fetchPlayerPic";
 import { useEffect, useState } from "react";
 import { fetchPlayerData } from "./fetchAllPlayers";
-
+import { checkName } from "./fullName";
 
 const PlayerCard = ({ selectedPlayer }) => {
   const [playerData, setPlayerData] = useState(null);
   const [playerPic, setPlayerPic] = useState(null);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     if (!selectedPlayer) return;
 
     const fetchData = async () => {
       try {
-        const playerData = await fetchPlayerData(selectedPlayer.id);
-        const imageUrl = await fetchPlayerPic(selectedPlayer); // Change the player name as needed
-        setPlayerData(playerData);
-        setPlayerPic(imageUrl);
+        let index = checkName(selectedPlayer);
+        
+        if (index !== -1) {
+          const data = await fetchPlayerData(index);
+          const imageUrl = await fetchPlayerPic(selectedPlayer);
+          setPlayerData(data);
+          setPlayerPic(imageUrl);
+      } else {
+          setError('Player not found');
+      }
+      
+        // const playerData = await fetchPlayerData();
+        // const imageUrl = await fetchPlayerPic(selectedPlayer); // Change the player name as needed
+        // setPlayerData(playerData);
+        // setPlayerPic(imageUrl);
       }catch (error) {
-        console.error('Error fetching player pic:', error);
-        setError('Failed to fetch player pic');
+        console.error('Error fetching player card:', error);
+        setError('Failed to fetch player card');
       }
     };
     fetchData();
@@ -50,12 +61,16 @@ const PlayerCard = ({ selectedPlayer }) => {
                     <p>No image available</p>
                 )}
                 <CardContent>
-                    <p>Height: {playerData.height}</p>
-                    <p>Jersey number: {playerData.jersey_number}</p>
-                    <p>Team: {playerData.team.city}</p>
-                    <p>Division: {playerData.team.division}</p>
-                    <p>Conference: {playerData.team.conference}</p>
-                    <p>Draft Year: {playerData.draft_year}</p>
+                  {playerData && (
+                    <>
+                      <p>Height: {playerData.height}</p>
+                      <p>Jersey number: {playerData.jersey_number}</p>
+                      <p>Team: {playerData.team.city}</p>
+                      <p>Division: {playerData.team.division}</p>
+                      <p>Conference: {playerData.team.conference}</p>
+                      <p>Draft Year: {playerData.draft_year}</p>
+                    </>
+                  )}
                 </CardContent>
             </Card>
         </>
