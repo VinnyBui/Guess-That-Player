@@ -27,7 +27,13 @@ function SearchPlayer({ playersData, setSelectedPlayer }) {
         setInput(name);
         setSelectedPlayer(name);
         setShowResults(false);
-    }
+    };
+
+    const handeKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleNameClick(input);
+        }
+    };
 
     return (
         <>
@@ -41,6 +47,7 @@ function SearchPlayer({ playersData, setSelectedPlayer }) {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={handeKeyDown}
                     />
                 </div>
                 {showResults && (
