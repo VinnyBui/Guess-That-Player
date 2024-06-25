@@ -7,7 +7,7 @@ import PlayerCard from './components/playerCard';
 function App() {
     const[playersData, setPlayersData] = useState([]);
     const[randomName, setRandomName] = useState('');
-    const[selectedPlayer, setSelectedPlayer] = useState('');
+    const[selectedPlayer, setSelectedPlayer] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,14 +22,24 @@ function App() {
         fetchData();
     }, []);
 
+    const addSelectedPlayer = (name) => {
+        if (!selectedPlayer.includes(name)) {
+            setSelectedPlayer([...selectedPlayer, name]);
+        }
+    };
+
     return (
       <>
           <div className="flex flex-col items-center gap-8 pt-20">
                 <h1 className="font-bold text-5xl">
                     Guess That Player
                 </h1>
-                <SearchPlayer  playersData={playersData} setSelectedPlayer={setSelectedPlayer}/>
-                <PlayerCard selectedPlayer={selectedPlayer}/>
+                <SearchPlayer  playersData={playersData} setSelectedPlayer={addSelectedPlayer}/>
+                <div className="player-cards flex gap-4">
+                    {selectedPlayer.map((playerName, index) => (
+                        <PlayerCard key={index} selectedPlayer={playerName} />
+                    ))}
+                </div>
           </div>
       </>
   )
