@@ -10,13 +10,25 @@ import fetchPlayerPic from "./fetchPlayerPic";
 import { useEffect, useState } from "react";
 import { fetchPlayerData } from "./fetchAllPlayers";
 
-const PlayerCard = ({ selectedPlayer }) => {
+const PlayerCard = ({ selectedPlayer, playersData }) => {
   const [playerData, setPlayerData] = useState(null);
   const [playerPic, setPlayerPic] = useState(null);
   const [error, setError] = useState(null);
+  const [displaynName, setDisplayName] = useState(selectedPlayer);
 
   useEffect(() => {
     if (!selectedPlayer) return;
+
+    const player = playersData.find(player => {
+      const fullName = `${player.first_name} ${player.last_name}`;
+      return fullName.toLowerCase() === selectedPlayer.toLowerCase();
+    });
+
+    if (!player) {
+      setError('Player not found in players data');
+      return;
+    }
+    setDisplayName(`${player.first_name} ${player.last_name}`);
 
     const fetchData = async () => {
       try {
@@ -30,9 +42,9 @@ const PlayerCard = ({ selectedPlayer }) => {
       }
     };
     fetchData();
-  }, [selectedPlayer]);
+  }, [selectedPlayer, playersData]);
 
-  if(!selectedPlayer){
+  if(!selectedPlayer || error){
     return null;
   }
 
@@ -40,7 +52,7 @@ const PlayerCard = ({ selectedPlayer }) => {
         <>
             <Card className='flex flex-col items-center'>
                 <CardHeader>
-                    <CardTitle>{selectedPlayer}</CardTitle>
+                    <CardTitle>{displaynName}</CardTitle>
                     {playerData && <CardDescription>Position: {playerData.position}</CardDescription>}
                 </CardHeader>
                 {playerPic ? (

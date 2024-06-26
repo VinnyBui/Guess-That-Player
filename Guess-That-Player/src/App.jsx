@@ -37,7 +37,7 @@ function App() {
                 <SearchPlayer  playersData={playersData} setSelectedPlayer={addSelectedPlayer}/>
                 <div className="player-cards flex gap-4">
                     {selectedPlayer.map((playerName, index) => (
-                        <PlayerCard key={index} selectedPlayer={playerName} />
+                        <PlayerCard key={index} selectedPlayer={playerName} playersData={playersData}/>
                     ))}
                 </div>
           </div>
